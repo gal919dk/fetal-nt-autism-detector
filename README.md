@@ -31,15 +31,14 @@ cannot be measured reliably outside the correct sagittal plane.
 
 ```
 .
-├── src/
-│   ├── config.py                  # All paths and hyper-parameters
-│   ├── prepare_dataset.py         # Verify dataset, report class balance, make test split
-│   ├── train_model.py             # Train the quality classifier
-│   ├── evaluate_model.py          # Metrics + confusion matrix on held-out test set
-│   ├── extract_nt_measurement.py  # NT height from annotations -> CSV
-│   └── gradcam.py                 # Grad-CAM heatmap overlays
+├── config.py                  # All paths and hyper-parameters
+├── prepare_dataset.py         # Verify dataset, report class balance, make test split
+├── train_model.py             # Train the quality classifier
+├── evaluate_model.py          # Metrics + confusion matrix on held-out test set
+├── extract_nt_measurement.py  # NT height from annotations -> CSV
+├── gradcam.py                 # Grad-CAM heatmap overlays
 ├── requirements.txt
-├── .env.example                   # Template for local dataset paths
+├── .env.example               # Template for local dataset paths
 ├── LICENSE
 └── README.md
 ```
@@ -81,7 +80,7 @@ export FETUS_DATA_ROOT="/path/to/Dataset for Fetus Framework"
 Check that everything resolves correctly:
 
 ```bash
-python src/config.py
+python config.py
 ```
 
 ---
@@ -90,22 +89,22 @@ python src/config.py
 
 ```bash
 # 1. Inspect the dataset and class balance
-python src/prepare_dataset.py
+python prepare_dataset.py
 
 #    Optionally carve out a 15% held-out test set (this MOVES files)
-python src/prepare_dataset.py --make-test-split 0.15
+python prepare_dataset.py --make-test-split 0.15
 
 # 2. Train the classifier
-python src/train_model.py --epochs 25
+python train_model.py --epochs 25
 
 # 3. Evaluate on the test set
-python src/evaluate_model.py
+python evaluate_model.py
 
 # 4. Extract NT measurements
-python src/extract_nt_measurement.py --save-images
+python extract_nt_measurement.py --save-images
 
 # 5. Generate Grad-CAM explanations
-python src/gradcam.py --directory "$FETUS_DATA_ROOT/test/Standard" --limit 10
+python gradcam.py --directory "$FETUS_DATA_ROOT/test/Standard" --limit 10
 ```
 
 ### Outputs
