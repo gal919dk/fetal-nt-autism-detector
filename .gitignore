@@ -1,0 +1,14 @@
+data/
+*.xlsx
+models/
+*.h5
+*.keras
+outputs/
+.env
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.vscode/
